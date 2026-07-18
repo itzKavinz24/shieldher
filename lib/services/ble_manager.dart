@@ -47,17 +47,19 @@ class BleManager extends ChangeNotifier {
 
   Timer? _uiTimer;
   bool _isReconnecting = false;
-  void start() {
+void start() {
+  // Prevent creating multiple timers
+  if (_uiTimer != null) return;
 
-    _autoConnectSavedDevices();
+  _autoConnectSavedDevices();
 
-    _uiTimer = Timer.periodic(
-      const Duration(seconds: 1),
-      (_) {
-        notifyListeners();
-      },
-    );
-  }
+  _uiTimer = Timer.periodic(
+    const Duration(seconds: 1),
+    (_) {
+      notifyListeners();
+    },
+  );
+}
 
   Future<void> _autoConnectSavedDevices() async {
 

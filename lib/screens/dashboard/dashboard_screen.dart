@@ -21,19 +21,21 @@ class _DashboardScreenState
   final ble = BleManager.instance;
 
   @override
-  void initState() {
-    super.initState();
+  @override
+void initState() {
+  super.initState();
 
- WidgetsBinding.instance
+  // Start BLE auto connection
+  BleManager.instance.start();
+
+  WidgetsBinding.instance
       .addPostFrameCallback((_) {
-
     EmergencyService.instance
         .startMonitoring(context);
   });
 
-    loadUser();
-  }
-
+  loadUser();
+}
   Future<void> loadUser() async {
     final uid =
         FirebaseAuth.instance.currentUser!.uid;
