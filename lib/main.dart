@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'screens/splash/splash_screen.dart';
-import 'screens/test/db_test_screen.dart';
 import 'database/database_helper.dart';
 import 'screens/emergency/emergency_test_screen.dart';
 import 'package:firebase_core/firebase_core.dart';

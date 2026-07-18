@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/user_service.dart';
-import '../../core/constants/mock_data.dart';
 import '../../services/alert_service.dart'; 
 import '../../services/ble_manager.dart';
 import '../../services/emergency_service.dart';
