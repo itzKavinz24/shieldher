@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "933286018701",
+    "project_id": "shieldher-6eca0",
+    "storage_bucket": "shieldher-6eca0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933286018701:android:cf89c9753b8de69bc4acc4",
+        "android_client_info": {
+          "package_name": "com.example.women_safety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933286018701-ac4apgdtsut6n4qhhh6ablmo7g4ecppg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.women_safety",
+            "certificate_hash": "9436f7166e97a969478bc3ba3efdd931732c5ad0"
+          }
+        },
+        {
+          "client_id": "933286018701-cqarmpj5domfekcvmchh988kne83i408.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.women_safety",
+            "certificate_hash": "3ebb1672ae1cd6362a5a937c747a037d4e53b994"
+          }
+        },
+        {
+          "client_id": "933286018701-6vvn9jfqr56ckq3q0b5o16agh62tk96v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_q_OhVqvwJ22Wi_bCRpjA7KFRsx3BQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933286018701-6vvn9jfqr56ckq3q0b5o16agh62tk96v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "933286018701-378tftimhp46cknjmdfrpemr1g7din6f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.womenSafety"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
