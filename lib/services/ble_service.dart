@@ -10,46 +10,44 @@ class BleService {
   }
 
   static Future<List<ScanResult>> scanDevices() async {
-    await requestPermissions();
+  await requestPermissions();
 
-    List<ScanResult> devices = [];
+  List<ScanResult> devices = [];
 
-    print("========== BLE SCAN STARTED ==========");
+  print("========== BLE SCAN STARTED ==========");
 
-    final subscription =
-        FlutterBluePlus.scanResults.listen((results) {
-      devices = results;
+  final subscription =
+      FlutterBluePlus.scanResults.listen((results) {
+    devices = results;
 
-      print("Current devices found: ${results.length}");
+    print("Current devices found: ${results.length}");
 
-      for (var device in results) {
-        print(
-  "Name: ${device.device.platformName} | "
-  "AdvName: ${device.advertisementData.advName} | "
-  "ID: ${device.device.remoteId} | "
-  "RSSI: ${device.rssi}",
-);
-      }
-    });
+    for (var device in results) {
+      print(
+        "Name: ${device.device.platformName} | "
+        "AdvName: ${device.advertisementData.advName} | "
+        "ID: ${device.device.remoteId} | "
+        "RSSI: ${device.rssi}",
+      );
+    }
+  });
 
-    await FlutterBluePlus.startScan(
-  timeout: const Duration(seconds: 10),
-  androidUsesFineLocation: true,
-);
+  await FlutterBluePlus.startScan(
+    timeout: const Duration(seconds: 10),
+    androidUsesFineLocation: true,
+  );
 
-    await Future.delayed(
-      const Duration(seconds: 5),
-    );
+  await Future.delayed(const Duration(seconds: 10));
 
-    await FlutterBluePlus.stopScan();
+  await FlutterBluePlus.stopScan();
 
-    print("========== BLE SCAN FINISHED ==========");
-    print("Devices found: ${devices.length}");
+  print("========== BLE SCAN FINISHED ==========");
+  print("Devices found: ${devices.length}");
 
-    await subscription.cancel();
+  await subscription.cancel();
 
-    return devices;
-  }
+  return devices;
+}
 
 static Stream<String> connectAndListen(
   BluetoothDevice device,

@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class LinkChildScreen extends StatefulWidget {
   const LinkChildScreen({super.key});
-
   @override
   State<LinkChildScreen> createState() => _LinkChildScreenState();
 }

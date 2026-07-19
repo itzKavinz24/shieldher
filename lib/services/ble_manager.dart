@@ -47,7 +47,7 @@ class BleManager extends ChangeNotifier {
 
   Timer? _uiTimer;
   bool _isReconnecting = false;
-void start() {
+  void start() {
   // Prevent creating multiple timers
   if (_uiTimer != null) return;
 
@@ -76,14 +76,15 @@ void start() {
     print(
       "AUTO SCRUNCHIE ID = $scrunchieId",
     );
-
+    
     final devices =
       await BleService.scanDevices();
 
     for (var d in devices) {
 
-      if (d.device.remoteId.toString() ==
-          healthId) {
+      if (!healthConnected &&
+    (d.device.remoteId.toString() == healthId ||
+    d.advertisementData.advName == "esp_32_health")) {
 
         print(
           "FOUND SAVED HEALTH BAND",
@@ -124,7 +125,10 @@ void start() {
           setHealthDevice(
             d.device,
           );
-
+     
+await DeviceStorage.saveHealthBand(
+  d.device.remoteId.toString(),
+);
         BleService.connectAndListen(
           d.device,
           "abcdef12-3456-7890-abcd-123456789abc",
@@ -137,8 +141,9 @@ void start() {
         );
       }
 
-      if (d.device.remoteId.toString() ==
-          scrunchieId) {
+      if (!scrunchieConnected &&
+    (d.device.remoteId.toString() == scrunchieId ||
+    d.advertisementData.advName == "Scrunchie")) { 
 
         print(
           "FOUND SAVED SCRUNCHIE",
@@ -177,7 +182,9 @@ void start() {
         setScrunchieDevice(
           d.device,
         );
-
+await DeviceStorage.saveScrunchie(
+  d.device.remoteId.toString(),
+);
         BleService.connectAndListen(
           d.device,
           "abcdefab-1234-5678-1234-abcdefabcdef",
@@ -192,10 +199,27 @@ void start() {
     }
 
     print(
-      "AUTO SCAN FOUND = ${devices.length}",
-    );
+  "AUTO SCAN FOUND = ${devices.length}",
+);
 
-  }
+
+
+if (allConnected) {
+  await FlutterBluePlus.stopScan();
+  print("Both devices connected.");
+} else {
+  print("Devices not fully connected. Retrying in 5 seconds...");
+
+  Future.delayed(
+    const Duration(seconds: 5),
+    () async {
+      if (!allConnected) {
+        await _autoConnectSavedDevices();
+      }
+    },
+  );
+}
+}
 
   void setHealthDevice(
     BluetoothDevice device,

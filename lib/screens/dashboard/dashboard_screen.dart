@@ -400,52 +400,6 @@ void initState() {
 
               const SizedBox(height: 25),
 
-              const Text(
-                "Quick Actions",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-
-                                children: [
-                                  GestureDetector(
-                  onTap: () async {
-                    await AlertService.sendEmergencyAlert();
-                  },
-                  child: quickButton(
-                    Icons.sos,
-                    "SOS",
-                    Colors.red,
-                  ),
-                ),
-
-                  quickButton(
-                    Icons.people,
-                    "Contacts",
-                    Colors.purple,
-                  ),
-
-                  quickButton(
-                    Icons.notifications,
-                    "Alerts",
-                    Colors.purple,
-                  ),
-
-                  quickButton(
-                    Icons.settings,
-                    "Settings",
-                    Colors.purple,
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 20),
             ],
           ),
         ),
